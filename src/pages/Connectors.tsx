@@ -15,7 +15,12 @@ export default function Connectors() {
   const save = async () => {
     setBusy("save");
     try {
-      await api.put(`/connectors/${edit.id}`, { config: edit.config, is_enabled: edit.is_enabled });
+      await api.put(`/connectors/${edit.id}`, { 
+        connector_name: edit.connector_name,
+        connector_type: edit.connector_type,
+        config_json: edit.config_json, 
+        enabled: edit.enabled 
+      });
       toast.success("Connector saved"); setEdit(null); load();
     } catch (e) { toast.error(errMsg(e)); } finally { setBusy(null); }
   };
@@ -36,7 +41,7 @@ export default function Connectors() {
     } catch (e) { toast.error(errMsg(e)); } finally { setBusy(null); }
   };
 
-  const setCfg = (k: string, v: any) => setEdit({ ...edit, config: { ...edit.config, [k]: v } });
+  const setCfg = (k: string, v: any) => setEdit({ ...edit, config_json: { ...(edit.config_json || {}), [k]: v } });
 
   return (
     <div className="max-w-3xl space-y-6">
@@ -46,8 +51,8 @@ export default function Connectors() {
           <div key={c.id} className="card p-5">
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-white font-medium">{c.name} <span className="text-xs text-slate-500">({c.connector_type})</span></div>
-                <div className="text-xs text-slate-500 mt-1">{c.is_enabled ? <span className="text-emerald-400">● enabled</span> : <span className="text-slate-500">○ disabled</span>}</div>
+                <div className="text-white font-medium">{c.connector_name} <span className="text-xs text-slate-500">({c.connector_type})</span></div>
+                <div className="text-xs text-slate-500 mt-1">{c.enabled ? <span className="text-emerald-400">● enabled</span> : <span className="text-slate-500">○ disabled</span>}</div>
               </div>
               <div className="flex gap-2">
                 <button className="btn-ghost text-xs" onClick={() => setEdit(JSON.parse(JSON.stringify(c)))}>Configure</button>
@@ -57,18 +62,18 @@ export default function Connectors() {
             </div>
             {edit?.id === c.id && (
               <div className="mt-4 pt-4 border-t border-edge space-y-3">
-                {c.connector_type === "jira" ? (
+                {c.connector_type?.toLowerCase() === "jira" ? (
                   <>
-                    <div><label className="label">Jira Base URL</label><input className="input" placeholder="https://yourorg.atlassian.net" value={edit.config.base_url || ""} onChange={e => setCfg("base_url", e.target.value)} /></div>
-                    <div><label className="label">Email</label><input className="input" value={edit.config.email || ""} onChange={e => setCfg("email", e.target.value)} /></div>
-                    <div><label className="label">API Token <span className="text-slate-500">(leave masked value to keep existing)</span></label><input className="input" value={edit.config.api_token || ""} onChange={e => setCfg("api_token", e.target.value)} /></div>
-                    <div><label className="label">Project Key</label><input className="input" placeholder="QUAL" value={edit.config.project_key || ""} onChange={e => setCfg("project_key", e.target.value)} /></div>
+                    <div><label className="label">Jira Base URL</label><input className="input" placeholder="https://yourorg.atlassian.net" value={edit.config_json?.base_url || ""} onChange={e => setCfg("base_url", e.target.value)} /></div>
+                    <div><label className="label">Email</label><input className="input" value={edit.config_json?.email || ""} onChange={e => setCfg("email", e.target.value)} /></div>
+                    <div><label className="label">API Token <span className="text-slate-500">(leave masked value to keep existing)</span></label><input className="input" value={edit.config_json?.api_token || ""} onChange={e => setCfg("api_token", e.target.value)} /></div>
+                    <div><label className="label">Project Key</label><input className="input" placeholder="QUAL" value={edit.config_json?.project_key || ""} onChange={e => setCfg("project_key", e.target.value)} /></div>
                   </>
                 ) : (
                   <div className="text-sm text-slate-400">CSV connector — upload files from the Upload CSV page. Sync re-runs analysis + knowledge graph build.</div>
                 )}
                 <label className="flex items-center gap-2 text-sm text-slate-300">
-                  <input type="checkbox" checked={edit.is_enabled} onChange={e => setEdit({ ...edit, is_enabled: e.target.checked })} /> Enabled
+                  <input type="checkbox" checked={edit.enabled} onChange={e => setEdit({ ...edit, enabled: e.target.checked })} /> Enabled
                 </label>
                 <div className="flex gap-2">
                   <button className="btn" disabled={busy === "save"} onClick={save}>Save</button>
