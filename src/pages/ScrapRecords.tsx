@@ -12,7 +12,7 @@ export default function ScrapRecords() {
   const [total, setTotal] = useState(0);
   const [page, setPage] = useState(0);
   const [f, setF] = useState({ plant: "", line: "", machine: "", shift: "", defect_code: "" });
-  const size = 25;
+  const size = 10;
 
   const load = async () => {
     try {
