@@ -70,7 +70,7 @@ export default function KnowledgeGraph() {
 
       <div className="card p-1" style={{ height: "70vh" }}>
         {html ? (
-          <iframe title="kg" srcDoc={html} className="w-full h-full rounded bg-white" sandbox="allow-scripts" />
+          <iframe title="kg" srcDoc={html} className="w-full h-full rounded bg-[#ffffff]" sandbox="allow-scripts" />
         ) : (
           <div className="flex items-center justify-center h-full text-slate-500 text-sm">
             Graph not built yet, or ArangoDB unreachable. Upload CSV + run analysis, or click Rebuild Graph.

@@ -1,4 +1,4 @@
-import { NavLink, Outlet, useNavigate } from 'react-router-dom'
+﻿import { NavLink, Outlet, useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 
 const links = [
@@ -21,11 +21,11 @@ export default function Layout() {
   const { user, isAdmin, logout } = useAuth()
   const nav = useNavigate()
   return (
-    <div className="flex min-h-screen">
+    <div className="flex h-screen overflow-hidden">
       <aside className="w-60 shrink-0 border-r border-edge bg-panel/60 flex flex-col">
         <div className="px-5 py-5 border-b border-edge">
-          <div className="font-display text-amber-300 text-lg tracking-widest">AGENT 17</div>
-          <div className="text-[10px] uppercase tracking-widest text-slate-500">Quality · Scrap · COPQ</div>
+          <div className="font-display text-amber-300 text-lg tracking-widest">Quality Scrap COPQ</div>
+          {/* <div className="text-[10px] uppercase tracking-widest text-slate-500">Quality Â· Scrap Â· COPQ</div> */}
         </div>
         <nav className="flex-1 py-3 overflow-y-auto">
           {links.filter(l => !l.admin || isAdmin).map(l => (
@@ -58,3 +58,4 @@ export default function Layout() {
     </div>
   )
 }
+
