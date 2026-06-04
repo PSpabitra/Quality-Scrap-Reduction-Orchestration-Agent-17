@@ -88,7 +88,8 @@ export default function Actions() {
               <div className="text-white font-medium">{sel.title}</div>
               <p className="text-sm text-slate-400 mt-1">{sel.description}</p>
               <div className="text-xs text-slate-500 mt-2">
-                {sel.action_type} · {sel.assigned_team} · {sel.priority} · assigned {sel.assigned_to}
+                {sel.action_type} · {sel.assigned_team} · {sel.priority}
+                {sel.assigned_to ? ` · assigned to ${sel.assigned_to}` : " · unassigned"}
                 {sel.jira_key && <span className="text-cyan-300"> · Jira {sel.jira_key}</span>}
               </div>
             </div>
