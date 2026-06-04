@@ -4,43 +4,33 @@ export default {
   theme: {
     extend: {
       colors: {
-        ink: "#f8fafc",
-        panel: "#ffffff",
-        edge: "#e2e8f0",
-        white: "#0f172a",
+        ink: "#050505",       // Deep black background
+        panel: "#0f0f11",     // Slightly lighter panel
+        edge: "#27272a",      // Zinc 800 borders
         amber: {
-          300: "#b45309",
-          400: "#92400e",
+          300: "#fcd34d",
+          400: "#fbbf24",
           500: "#f59e0b",
-          glow: "#c2410c"
+          glow: "#fbbf24"
         },
         cyan: {
-          50: "#164e63",
-          300: "#0e7490",
+          50: "#ecfeff",
+          300: "#67e8f9",
           500: "#06b6d4",
-          600: "#0891b2"
+          600: "#0891b2",
+          700: "#0e7490",
+          800: "#155e75"
         },
         emerald: {
-          300: "#047857",
-          400: "#065f46",
+          300: "#6ee7b7",
+          400: "#34d399",
           500: "#10b981"
         },
         rose: {
-          300: "#be123c",
+          300: "#fda4af",
           500: "#f43f5e"
         },
-        cy: "#0284c7",
-        slate: {
-          100: "#0f172a",
-          200: "#1e293b",
-          300: "#334155",
-          400: "#475569",
-          500: "#64748b",
-          600: "#94a3b8",
-          700: "#cbd5e1",
-          800: "#e2e8f0",
-          900: "#f1f5f9"
-        }
+        cy: "#22d3ee"
       },
       fontFamily: {
         display: ["'Chakra Petch'", "sans-serif"],

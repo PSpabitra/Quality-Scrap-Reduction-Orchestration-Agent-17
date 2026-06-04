@@ -6,11 +6,10 @@ const links = [
   { to: '/app/drivers', label: 'Scrap Drivers' },
   { to: '/app/records', label: 'Scrap Records' },
   { to: '/app/upload-csv', label: 'Upload CSV', admin: true },
-  { to: '/app/upload-docs', label: 'Upload Documents', admin: true },
+  { to: '/app/upload-docs', label: 'Knowledge Base', admin: true },
   { to: '/app/rca', label: 'AI Root Cause' },
   { to: '/app/actions', label: 'Actions / CAPA' },
   { to: '/app/impact', label: 'Impact' },
-  { to: '/app/graph', label: 'Knowledge Graph' },
   { to: '/app/chat', label: 'Chatbot' },
   { to: '/app/reports', label: 'Reports' },
   { to: '/app/connectors', label: 'Connectors', admin: true },
@@ -21,41 +20,48 @@ export default function Layout() {
   const { user, isAdmin, logout } = useAuth()
   const nav = useNavigate()
   return (
-    <div className="flex h-screen overflow-hidden">
-      <aside className="w-60 shrink-0 border-r border-edge bg-panel/60 flex flex-col">
-        <div className="px-5 py-5 border-b border-edge">
-          <div className="font-display text-amber-300 text-lg tracking-widest">Quality Scrap COPQ</div>
-          {/* <div className="text-[10px] uppercase tracking-widest text-slate-500">Quality Â· Scrap Â· COPQ</div> */}
+    <div className="flex h-screen overflow-hidden bg-ink text-slate-200">
+      <aside className="w-64 shrink-0 border-r border-edge bg-panel flex flex-col shadow-sm z-10">
+        <div className="px-6 py-6 border-b border-edge">
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center shadow-lg shadow-cyan-500/20">
+              <span className="font-display font-bold text-ink text-lg">Q</span>
+            </div>
+            <div className="flex flex-col">
+              <div className="font-display text-white text-lg tracking-wide font-bold leading-none">QUALITY</div>
+              <div className="text-[10px] uppercase tracking-widest text-cyan-400 font-medium mt-1">Scrap · COPQ</div>
+            </div>
+          </div>
         </div>
-        <nav className="flex-1 py-3 overflow-y-auto">
+        <nav className="flex-1 py-4 overflow-y-auto space-y-1 px-3">
           {links.filter(l => !l.admin || isAdmin).map(l => (
             <NavLink key={l.to} to={l.to}
               className={({ isActive }) =>
-                `block px-5 py-2 text-sm font-display tracking-wide border-l-2 ${
-                  isActive ? 'border-amber-400 text-amber-300 bg-amber-400/5'
-                           : 'border-transparent text-slate-400 hover:text-slate-200'}`}>
+                `block px-3 py-2.5 rounded-md text-sm font-display tracking-wide transition-all ` + (
+                  isActive ? 'bg-cyan-950/40 border border-cyan-800/50 text-cyan-300 shadow-sm font-medium'
+                           : 'text-slate-400 hover:bg-slate-800/50 hover:text-cyan-300') }>
               {l.label}
             </NavLink>
           ))}
         </nav>
       </aside>
-      <div className="flex-1 flex flex-col min-w-0">
-        <header className="h-14 border-b border-edge flex items-center justify-between px-6 bg-panel/40">
-          <div className="font-mono text-xs text-slate-500">CONTINUOUS IMPROVEMENT EXECUTION ENGINE</div>
+      <div className="flex-1 flex flex-col min-w-0 bg-ink">
+        <header className="h-14 border-b border-edge flex items-center justify-between px-8 bg-panel shadow-sm z-0">
+          <div className="font-mono text-[11px] text-slate-500 tracking-wider">CONTINUOUS IMPROVEMENT EXECUTION ENGINE</div>
           <div className="flex items-center gap-4">
-            <span className="text-sm">{user?.name}
-              <span className="ml-2 px-2 py-0.5 rounded bg-cy/10 text-cy text-[10px] font-display border border-cy/30">
+            <span className="text-sm font-medium text-slate-300 flex items-center">{user?.name}
+              <span className="ml-3 px-2.5 py-0.5 rounded-full bg-cyan-950 text-cyan-300 text-[10px] uppercase tracking-wider font-semibold border border-cyan-800 shadow-sm">
                 {user?.role}
               </span>
             </span>
-            <button className="btn-ghost !py-1" onClick={() => { logout(); nav('/login') }}>Logout</button>
+            <div className="h-4 w-px bg-slate-700"></div>
+            <button className="text-sm font-display tracking-wide text-slate-500 hover:text-rose-400 transition" onClick={() => { logout(); nav('/') }}>Logout</button>
           </div>
         </header>
-        <main className="flex-1 p-6 overflow-y-auto">
+        <main className="flex-1 p-6 overflow-y-auto w-full max-w-[100vw]">
           <Outlet />
         </main>
       </div>
     </div>
   )
 }
-
