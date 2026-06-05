@@ -4,9 +4,9 @@ export default {
   theme: {
     extend: {
       colors: {
-        ink: "#050505",       // Deep black background
-        panel: "#0f0f11",     // Slightly lighter panel
-        edge: "#27272a",      // Zinc 800 borders
+        ink: "#ffffff",       // White background
+        panel: "#f8fafc",     // Slightly grayish panel (slate-50)
+        edge: "#e2e8f0",      // Slate 200 borders
         amber: {
           300: "#fcd34d",
           400: "#fbbf24",

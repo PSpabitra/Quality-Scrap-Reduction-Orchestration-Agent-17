@@ -33,7 +33,7 @@ export default function ScrapDrivers() {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-display text-white">Scrap Driver Dashboard</h1>
+        <h1 className="text-2xl font-display text-slate-900">Scrap Driver Dashboard</h1>
         <select className="input w-40" value={n} onChange={e => setN(Number(e.target.value))}>
           <option value={5}>Top 5</option><option value={10}>Top 10</option>
           <option value={15}>Top 15</option><option value={25}>Top 25</option>
@@ -44,11 +44,11 @@ export default function ScrapDrivers() {
         <div className="label mb-2">Pareto — COPQ with cumulative % (80/20 rule)</div>
         <ResponsiveContainer width="100%" height={320}>
           <ComposedChart data={chartData}>
-            <CartesianGrid stroke="#1e2a44" />
+            <CartesianGrid stroke="#f1f5f9" />
             <XAxis dataKey="name" stroke="#64748b" tick={{ fontSize: 11 }} />
             <YAxis yAxisId="l" stroke="#64748b" />
             <YAxis yAxisId="r" orientation="right" domain={[0, 100]} stroke="#64748b" />
-            <Tooltip contentStyle={{ background: "#111a2e", border: "1px solid #1e2a44" }} />
+            <Tooltip contentStyle={{ background: "#ffffff", border: "1px solid #f1f5f9" }} />
             <Bar yAxisId="l" dataKey="copq" fill="#f59e0b" name="COPQ" />
             <Line yAxisId="r" dataKey="cum" stroke="#22d3ee" name="Cumulative %" dot={false} strokeWidth={2} />
           </ComposedChart>
@@ -67,16 +67,16 @@ export default function ScrapDrivers() {
             {drivers.map(d => (
               <tr key={d.id} className="hover:bg-edge/30">
                 <td className="td">{d.rank}</td>
-                <td className="td text-slate-300">{d.plant} / {d.line} / {d.machine}</td>
-                <td className="td font-medium text-white">{d.component_code}</td>
+                <td className="td text-slate-700">{d.plant} / {d.line} / {d.machine}</td>
+                <td className="td font-medium text-slate-900">{d.component_code}</td>
                 <td className="td">{d.defect_code}</td>
                 <td className="td">{d.scrap_qty?.toLocaleString()}</td>
                 <td className="td">{d.scrap_percent?.toFixed(2)}%</td>
-                <td className="td text-amber-400">₹{Math.round(d.copq).toLocaleString()}</td>
+                <td className="td text-amber-600">₹{Math.round(d.copq).toLocaleString()}</td>
                 <td className="td">{d.pareto_percentage?.toFixed(1)}%</td>
                 <td className="td"><RiskBadge level={d.risk_level} /></td>
-                <td className="td max-w-xs text-slate-400">{d.reason}</td>
-                <td className="td max-w-xs text-cyan-300">{d.recommended_action}</td>
+                <td className="td max-w-xs text-slate-600">{d.reason}</td>
+                <td className="td max-w-xs text-cyan-600an-300">{d.recommended_action}</td>
                 <td className="td"><Link className="btn-ghost text-xs" to={`/app/rca?result=${d.id}`}>RCA →</Link></td>
               </tr>
             ))}

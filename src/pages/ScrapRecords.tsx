@@ -26,7 +26,7 @@ export default function ScrapRecords() {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-display text-white">Scrap Records</h1>
+      <h1 className="text-2xl font-display text-slate-900">Scrap Records</h1>
       <div className="card p-4 grid grid-cols-2 md:grid-cols-6 gap-3">
         {(["plant", "line", "machine", "shift", "defect_code"] as const).map(k => (
           <input key={k} className="input" placeholder={k.replace("_", " ")} value={f[k]}
@@ -42,20 +42,20 @@ export default function ScrapRecords() {
               <tr key={r.id} className="hover:bg-edge/30">
                 <td className="td">{r.plant}</td><td className="td">{r.line}</td><td className="td">{r.machine}</td>
                 <td className="td">{r.shift}</td>
-                <td className="td text-white">{r.component_name} <span className="text-slate-500">({r.component_code})</span></td>
+                <td className="td text-slate-900">{r.component_name} <span className="text-slate-500">({r.component_code})</span></td>
                 <td className="td">{r.defect_code} — {r.defect_description}</td>
-                <td className="td">{r.production_qty}</td><td className="td text-rose-300">{r.scrap_qty}</td>
+                <td className="td">{r.production_qty}</td><td className="td text-rose-700">{r.scrap_qty}</td>
                 <td className="td">{r.scrap_percent.toFixed(2)}%</td>
-                <td className="td text-amber-400">₹{r.copq.toLocaleString()}</td>
+                <td className="td text-amber-600">₹{r.copq.toLocaleString()}</td>
                 <td className="td">{r.tooling_age_days}d</td>
-                <td className="td text-slate-400">{new Date(r.event_time).toLocaleString()}</td>
+                <td className="td text-slate-600">{new Date(r.event_time).toLocaleString()}</td>
               </tr>
             ))}
             {rows.length === 0 && <tr><td className="td text-slate-500" colSpan={12}>No records.</td></tr>}
           </tbody>
         </table>
       </div>
-      <div className="flex items-center gap-3 text-sm text-slate-400">
+      <div className="flex items-center gap-3 text-sm text-slate-600">
         <button className="btn-ghost" disabled={page === 0} onClick={() => setPage(p => p - 1)}>← Prev</button>
         <span>Page {page + 1} of {Math.max(1, Math.ceil(total / size))} ({total} records)</span>
         <button className="btn-ghost" disabled={(page + 1) * size >= total} onClick={() => setPage(p => p + 1)}>Next →</button>

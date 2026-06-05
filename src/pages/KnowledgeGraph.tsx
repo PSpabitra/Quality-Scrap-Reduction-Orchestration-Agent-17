@@ -39,7 +39,7 @@ export default function KnowledgeGraph() {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-display text-white">Knowledge Graph</h1>
+        <h1 className="text-2xl font-display text-slate-900">Knowledge Graph</h1>
         {isAdmin && <button className="btn" disabled={busy} onClick={rebuild}>{busy ? "Building…" : "Rebuild Graph"}</button>}
       </div>
 
@@ -57,11 +57,11 @@ export default function KnowledgeGraph() {
         <div className="card p-4 space-y-2">
           <div className="label">Similar Past Issues</div>
           {results.map((r, i) => (
-            <div key={i} className="text-sm border-l-2 border-cyan-500/40 pl-3 text-slate-300">
-              <span className="text-white">{r.defect || r.name || r.label}</span>
+            <div key={i} className="text-sm border-l-2 border-cyan-500/40 pl-3 text-slate-700">
+              <span className="text-slate-900">{r.defect || r.name || r.label}</span>
               {r.component && <span> · {r.component}</span>}
               {r.machine && <span> · {r.machine}</span>}
-              {r.copq != null && <span className="text-amber-400"> · COPQ ₹{Math.round(r.copq).toLocaleString()}</span>}
+              {r.copq != null && <span className="text-amber-600"> · COPQ ₹{Math.round(r.copq).toLocaleString()}</span>}
               {r.rca_summary && <div className="text-xs text-slate-500 mt-1">{r.rca_summary}</div>}
             </div>
           ))}

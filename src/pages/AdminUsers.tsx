@@ -34,10 +34,10 @@ export default function AdminUsers() {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-display text-white">Administration</h1>
+      <h1 className="text-2xl font-display text-slate-900">Administration</h1>
       <div className="flex gap-2">
         {(["users", "logs", "emails"] as const).map(t => (
-          <button key={t} className={`btn-ghost capitalize ${tab === t ? "border-cyan-500 text-cyan-300" : ""}`} onClick={() => setTab(t)}>{t}</button>
+          <button key={t} className={`btn-ghost capitalize ${tab === t ? "border-cyan-500 text-cyan-600an-300" : ""}`} onClick={() => setTab(t)}>{t}</button>
         ))}
       </div>
 
@@ -58,9 +58,9 @@ export default function AdminUsers() {
               <tbody>
                 {users.map(u => (
                   <tr key={u.id} className="hover:bg-edge/30">
-                    <td className="td text-white">{u.email}</td><td className="td">{u.full_name}</td>
-                    <td className="td"><span className={`text-xs px-2 py-0.5 rounded ${u.role === "ADMIN" ? "bg-amber-500/10 text-amber-300" : "bg-cyan-500/10 text-cyan-300"}`}>{u.role}</span></td>
-                    <td className="td">{u.is_active ? <span className="text-emerald-400">active</span> : <span className="text-slate-500">disabled</span>}</td>
+                    <td className="td text-slate-900">{u.email}</td><td className="td">{u.full_name}</td>
+                    <td className="td"><span className={`text-xs px-2 py-0.5 rounded ${u.role === "ADMIN" ? "bg-amber-500/10 text-amber-700" : "bg-cyan-500/10 text-cyan-600an-300"}`}>{u.role}</span></td>
+                    <td className="td">{u.is_active ? <span className="text-emerald-600">active</span> : <span className="text-slate-500">disabled</span>}</td>
                     <td className="td"><button className="btn-ghost text-xs" onClick={() => toggleActive(u)}>{u.is_active ? "Disable" : "Enable"}</button></td>
                   </tr>
                 ))}
@@ -77,9 +77,9 @@ export default function AdminUsers() {
             <tbody>
               {logs.map(l => (
                 <tr key={l.id} className="hover:bg-edge/30">
-                  <td className="td text-slate-400">{new Date(l.created_at).toLocaleString()}</td>
-                  <td className="td"><span className={l.level === "ERROR" ? "text-rose-300" : l.level === "WARNING" ? "text-amber-300" : "text-slate-300"}>{l.level}</span></td>
-                  <td className="td">{l.source}</td><td className="td text-slate-300">{l.message}</td>
+                  <td className="td text-slate-600">{new Date(l.created_at).toLocaleString()}</td>
+                  <td className="td"><span className={l.level === "ERROR" ? "text-rose-700" : l.level === "WARNING" ? "text-amber-700" : "text-slate-700"}>{l.level}</span></td>
+                  <td className="td">{l.source}</td><td className="td text-slate-700">{l.message}</td>
                 </tr>
               ))}
               {logs.length === 0 && <tr><td className="td text-slate-500" colSpan={4}>No logs.</td></tr>}
@@ -95,9 +95,9 @@ export default function AdminUsers() {
             <tbody>
               {emails.map(e => (
                 <tr key={e.id} className="hover:bg-edge/30">
-                  <td className="td text-slate-400">{new Date(e.created_at).toLocaleString()}</td>
-                  <td className="td">{e.recipient}</td><td className="td text-white">{e.subject}</td>
-                  <td className="td">{e.status === "sent" ? <span className="text-emerald-400">sent</span> : <span className="text-rose-300">{e.status}</span>}</td>
+                  <td className="td text-slate-600">{new Date(e.created_at).toLocaleString()}</td>
+                  <td className="td">{e.recipient}</td><td className="td text-slate-900">{e.subject}</td>
+                  <td className="td">{e.status === "sent" ? <span className="text-emerald-600">sent</span> : <span className="text-rose-700">{e.status}</span>}</td>
                 </tr>
               ))}
               {emails.length === 0 && <tr><td className="td text-slate-500" colSpan={4}>No notifications sent.</td></tr>}

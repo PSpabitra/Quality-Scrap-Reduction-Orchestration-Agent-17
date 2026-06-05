@@ -45,14 +45,14 @@ export default function Connectors() {
 
   return (
     <div className="max-w-3xl space-y-6">
-      <h1 className="text-2xl font-display text-white">Connector Configuration</h1>
+      <h1 className="text-2xl font-display text-slate-900">Connector Configuration</h1>
       <div className="grid gap-4">
         {connectors.filter(c => c.connector_type?.toLowerCase() !== 'csv').map(c => (
           <div key={c.id} className="card p-5">
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-white font-medium">{c.connector_name} <span className="text-xs text-slate-500">({c.connector_type})</span></div>
-                <div className="text-xs text-slate-500 mt-1">{c.enabled ? <span className="text-emerald-400">● enabled</span> : <span className="text-slate-500">○ disabled</span>}</div>
+                <div className="text-slate-900 font-medium">{c.connector_name} <span className="text-xs text-slate-500">({c.connector_type})</span></div>
+                <div className="text-xs text-slate-500 mt-1">{c.enabled ? <span className="text-emerald-600">● enabled</span> : <span className="text-slate-500">○ disabled</span>}</div>
               </div>
               <div className="flex gap-2">
                 <button className="btn-ghost text-xs" onClick={() => setEdit(JSON.parse(JSON.stringify(c)))}>Configure</button>
@@ -61,7 +61,7 @@ export default function Connectors() {
               </div>
             </div>
             {edit?.id === c.id && (
-              <div className="mt-4 pt-4 border-t border-edge space-y-3">
+              <div className="mt-4 pt-4 border-t border-slate-200 space-y-3">
                 {c.connector_type?.toLowerCase() === "jira" && (
                   <>
                     <div><label className="label">Jira Base URL</label><input className="input" placeholder="https://yourorg.atlassian.net" value={edit.config_json?.base_url || ""} onChange={e => setCfg("base_url", e.target.value)} /></div>
@@ -70,7 +70,7 @@ export default function Connectors() {
                     <div><label className="label">Project Key</label><input className="input" placeholder="QUAL" value={edit.config_json?.project_key || ""} onChange={e => setCfg("project_key", e.target.value)} /></div>
                   </>
                 )}
-                <label className="flex items-center gap-2 text-sm text-slate-300">
+                <label className="flex items-center gap-2 text-sm text-slate-700">
                   <input type="checkbox" checked={edit.enabled} onChange={e => setEdit({ ...edit, enabled: e.target.checked })} /> Enabled
                 </label>
                 <div className="flex gap-2">

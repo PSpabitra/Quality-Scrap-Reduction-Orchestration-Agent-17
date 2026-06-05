@@ -6,7 +6,7 @@ import Stat from '../components/Stat'
 import RiskBadge from '../components/RiskBadge'
 
 const COLORS = ['#fbbf24', '#22d3ee', '#a78bfa', '#34d399', '#f87171', '#fb923c', '#94a3b8']
-const tt = { contentStyle: { background: '#111a2e', border: '1px solid #1e2a44' } }
+const tt = { contentStyle: { background: '#ffffff', border: '1px solid #f1f5f9' } }
 
 export default function Dashboard() {
   const [s, setS] = useState<any>(null)
@@ -23,13 +23,13 @@ export default function Dashboard() {
 
   return (
     <div className="space-y-6">
-      <h1 className="font-display text-xl text-slate-100">PLANT QUALITY DASHBOARD</h1>
+      <h1 className="font-display text-xl text-slate-900">PLANT QUALITY DASHBOARD</h1>
       <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
         <Stat label="Total Scrap Qty" value={s.total_scrap_qty.toLocaleString()} />
-        <Stat label="Scrap %" value={`${s.scrap_percent}%`} accent="text-red-400" />
-        <Stat label="Total COPQ" value={s.total_copq.toLocaleString()} accent="text-cy" />
-        <Stat label="Open Actions" value={s.open_actions} accent="text-orange-400" />
-        <Stat label="Closed Actions" value={s.closed_actions} accent="text-emerald-400" />
+        <Stat label="Scrap %" value={`${s.scrap_percent}%`} accent="text-red-600" />
+        <Stat label="Total COPQ" value={s.total_copq.toLocaleString()} accent="text-cyan-600" />
+        <Stat label="Open Actions" value={s.open_actions} accent="text-orange-600" />
+        <Stat label="Closed Actions" value={s.closed_actions} accent="text-emerald-600" />
       </div>
 
       <div className="grid lg:grid-cols-2 gap-5">
@@ -37,7 +37,7 @@ export default function Dashboard() {
           <div className="label">Scrap Trend</div>
           <ResponsiveContainer width="100%" height={220}>
             <LineChart data={scrapTrend}>
-              <CartesianGrid stroke="#1e2a44" />
+              <CartesianGrid stroke="#f1f5f9" />
               <XAxis dataKey="date" stroke="#64748b" fontSize={11} />
               <YAxis stroke="#64748b" fontSize={11} />
               <Tooltip {...tt} />
@@ -50,7 +50,7 @@ export default function Dashboard() {
           <div className="label">COPQ Trend</div>
           <ResponsiveContainer width="100%" height={220}>
             <LineChart data={copqTrend}>
-              <CartesianGrid stroke="#1e2a44" />
+              <CartesianGrid stroke="#f1f5f9" />
               <XAxis dataKey="date" stroke="#64748b" fontSize={11} />
               <YAxis stroke="#64748b" fontSize={11} />
               <Tooltip {...tt} />
@@ -105,7 +105,7 @@ export default function Dashboard() {
                   <td className="td">{t.component_code}</td>
                   <td className="td">{t.defect_code}</td>
                   <td className="td">{t.machine}</td>
-                  <td className="td font-mono text-cy">{Number(t.copq).toLocaleString()}</td>
+                  <td className="td font-mono text-cyan-600">{Number(t.copq).toLocaleString()}</td>
                   <td className="td"><RiskBadge level={t.risk_level} /></td>
                 </tr>
               ))}

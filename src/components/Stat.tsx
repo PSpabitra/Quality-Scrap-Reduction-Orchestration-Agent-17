@@ -1,4 +1,4 @@
-export default function Stat({ label, value, accent = 'text-amber-300' }:
+export default function Stat({ label, value, accent = 'text-amber-600' }:
   { label: string; value: string | number; accent?: string }) {
   return (
     <div className="card">

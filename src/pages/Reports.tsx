@@ -31,7 +31,7 @@ export default function Reports() {
 
   return (
     <div className="max-w-3xl space-y-6">
-      <h1 className="text-2xl font-display text-white">Reports</h1>
+      <h1 className="text-2xl font-display text-slate-900">Reports</h1>
       <div className="card p-5 flex gap-3">
         <button className="btn" disabled={busy === "weekly"} onClick={() => generate("weekly")}>{busy === "weekly" ? "Generating…" : "Generate Weekly Report"}</button>
         <button className="btn" disabled={busy === "monthly"} onClick={() => generate("monthly")}>{busy === "monthly" ? "Generating…" : "Generate Monthly Report"}</button>
@@ -42,9 +42,9 @@ export default function Reports() {
           <tbody>
             {reports.map(r => (
               <tr key={r.id} className="hover:bg-edge/30">
-                <td className="td text-white">{r.filename}</td>
+                <td className="td text-slate-900">{r.filename}</td>
                 <td className="td capitalize">{r.period}</td>
-                <td className="td text-slate-400">{new Date(r.created_at).toLocaleString()}</td>
+                <td className="td text-slate-600">{new Date(r.created_at).toLocaleString()}</td>
                 <td className="td"><button className="btn-ghost text-xs" onClick={() => download(r)}>Download .docx</button></td>
               </tr>
             ))}
