@@ -12,7 +12,11 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <AuthProvider>
         <App />
         <Toaster position="top-right"
-          toastOptions={{ style: { background: '#ffffff', color: '#e2e8f0', border: '1px solid #f1f5f9' } }} />
+          toastOptions={{
+            style: { background: '#ffffff', color: '#0f172a', border: '1px solid #e2e8f0', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' },
+            success: { iconTheme: { primary: '#10b981', secondary: '#ffffff' } },
+            error: { iconTheme: { primary: '#f43f5e', secondary: '#ffffff' } }
+          }} />
       </AuthProvider>
     </BrowserRouter>
   </React.StrictMode>

@@ -5,7 +5,7 @@ const links = [
   { to: '/app/dashboard', label: 'Dashboard' },
   { to: '/app/drivers', label: 'Scrap Drivers' },
   { to: '/app/records', label: 'Scrap Records' },
-  { to: '/app/upload-csv', label: 'Upload CSV', admin: true },
+  { to: '/app/upload-csv', label: 'Data Ingestion', admin: true },
   { to: '/app/upload-docs', label: 'Knowledge Base', admin: true },
   { to: '/app/rca', label: 'AI Root Cause' },
   { to: '/app/actions', label: 'Actions / CAPA' },
