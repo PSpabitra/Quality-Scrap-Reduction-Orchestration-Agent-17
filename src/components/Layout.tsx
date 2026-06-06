@@ -3,9 +3,9 @@ import { useAuth } from '../context/AuthContext'
 
 const links = [
   { to: '/app/dashboard', label: 'Dashboard' },
+  { to: '/app/upload-csv', label: 'Data Ingestion', admin: true },
   { to: '/app/drivers', label: 'Scrap Drivers' },
   { to: '/app/records', label: 'Scrap Records' },
-  { to: '/app/upload-csv', label: 'Data Ingestion', admin: true },
   { to: '/app/upload-docs', label: 'Knowledge Base', admin: true },
   { to: '/app/rca', label: 'AI Root Cause' },
   { to: '/app/actions', label: 'Actions / CAPA' },
@@ -13,7 +13,7 @@ const links = [
   { to: '/app/chat', label: 'Chatbot' },
   { to: '/app/reports', label: 'Reports' },
   { to: '/app/connectors', label: 'Connectors', admin: true },
-  { to: '/app/admin', label: 'User Management', admin: true }
+  // { to: '/app/admin', label: 'User Management', admin: true }
 ]
 
 export default function Layout() {
