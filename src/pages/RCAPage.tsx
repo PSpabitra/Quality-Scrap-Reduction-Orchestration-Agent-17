@@ -18,7 +18,15 @@ export default function RCAPage() {
 
   useEffect(() => {
     if (sel == null) { setRca(null); return; }
-    api.get(`/analysis/results/${sel}/rca`).then(r => setRca(r.data)).catch(() => setRca(null));
+    api.get(`/analysis/results/${sel}/rca`)
+      .then(r => {
+        if (r.data) setRca(r.data);
+        else generate(false);
+      })
+      .catch(() => {
+        setRca(null);
+        generate(false);
+      });
   }, [sel]);
 
   const generate = async (regen = false) => {
@@ -60,10 +68,7 @@ export default function RCAPage() {
             </option>
           ))}
         </select>
-        <button className="btn" disabled={sel == null || busy || !!rca} onClick={() => generate(false)}>
-          {busy ? "Analyzing…" : "Generate RCA"}
-        </button>
-        <button className="btn-ghost" disabled={sel == null || busy || !rca} onClick={() => generate(true)}>Regenerate</button>
+        {busy && <span className="text-sm text-cyan-600 font-medium animate-pulse px-3">Analyzing…</span>}
       </div>
 
       {selResult && (
@@ -120,7 +125,11 @@ export default function RCAPage() {
           </div>
         </div>
       )}
-      {!rca && sel != null && <div className="card p-6 text-slate-500 text-sm bg-white shadow-sm">No RCA yet for this driver — click Generate RCA.</div>}
+      {!rca && sel != null && (
+        <div className="card p-6 text-slate-500 text-sm bg-white shadow-sm">
+          {busy ? "Generating AI Root Cause Analysis... Please wait." : "No RCA could be generated for this driver."}
+        </div>
+      )}
     </div>
   );
 }
