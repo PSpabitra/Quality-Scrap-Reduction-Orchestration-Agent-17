@@ -51,10 +51,7 @@ export default function UploadCSV() {
     <div className="max-w-2xl space-y-6">
       <h1 className="text-2xl font-display text-slate-900">Upload Scrap CSV</h1>
       <div className="card p-6 space-y-4">
-        <div className="label">Required columns</div>
-        <code className="block text-xs text-cyan-600an-300 bg-white p-3 rounded border border-slate-200 overflow-x-auto">
-          plant, line, machine, shift, operator, component_code, component_name, defect_code, defect_description, production_qty, scrap_qty, unit_cost, tooling_age_days, event_time
-        </code>
+        
 
         <div
           className={`border-2 border-dashed rounded-lg p-8 text-center transition-colors hover:border-cyan-500/50 ${dragActive ? 'border-cyan-400 bg-cyan-950/20' : 'border-slate-200 bg-white/50'}`}

@@ -58,7 +58,7 @@ export default function Impact() {
                 <YAxis stroke="#64748b" />
                 <Tooltip contentStyle={{ background: "#ffffff", border: "1px solid #f1f5f9" }} />
                 <Legend />
-                <Bar dataKey="Before" fill="#f43f5e" /><Bar dataKey="After" fill="#34d399" />
+                <Bar dataKey="Before" fill="#f43f5e" minPointSize={2} /><Bar dataKey="After" fill="#34d399" minPointSize={2} />
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -71,7 +71,7 @@ export default function Impact() {
                 <YAxis stroke="#64748b" />
                 <Tooltip contentStyle={{ background: "#ffffff", border: "1px solid #f1f5f9" }} />
                 <Legend />
-                <Bar dataKey="Before" fill="#f59e0b" /><Bar dataKey="After" fill="#22d3ee" />
+                <Bar dataKey="Before" fill="#f59e0b" minPointSize={2} /><Bar dataKey="After" fill="#22d3ee" minPointSize={2} />
               </BarChart>
             </ResponsiveContainer>
           </div>
